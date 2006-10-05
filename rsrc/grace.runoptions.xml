@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <grace.runoptions>
+   <grace.option id="-h">
+     <grace.long>--help</grace.long>
+   </grace.option>
+   <grace.option id="--help">
+     <grace.argc>0</grace.argc>
+   </grace.option>
+   
+   <grace.option id="-b">
+     <grace.long>--burst_write_interval</grace.long>
+   </grace.option>
+   <grace.option id="--burst_write_interval">
+     <grace.argc>1</grace.argc>
+   </grace.option>
+ 
+   <grace.option id="-r">
+     <grace.long>--rotate_enable</grace.long>
+   </grace.option>
+   <grace.option id="--rotate_enable">
+     <grace.argc>0</grace.argc>
+   </grace.option>
+ 
+   <grace.option id="-i">
+     <grace.long>--rotate_interval</grace.long>
+   </grace.option>
+   <grace.option id="--rotate_interval">
+     <grace.argc>1</grace.argc>
+   </grace.option>
+ 
+   <grace.option id="-m">
+     <grace.long>--max_logfile_size</grace.long>
+   </grace.option>
+   <grace.option id="--max_logfile_size">
+     <grace.argc>1</grace.argc>
+   </grace.option>
+ 
+   <grace.option id="-o">
+     <grace.long>--hookdir</grace.long>
+   </grace.option>
+   <grace.option id="--hookdir">
+     <grace.argc>1</grace.argc>
+   </grace.option>
+ 
+   <grace.option id="-s">
+     <grace.long>--statdir</grace.long>
+   </grace.option>
+   <grace.option id="--statdir">
+     <grace.argc>1</grace.argc>
+   </grace.option>
+ 
+   
+   
+ </grace.runoptions>
