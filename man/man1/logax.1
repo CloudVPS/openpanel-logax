@@ -1,11 +1,11 @@
 .\" manpage by panelsix. 
 .\" Contact danny@panelsix.com to correct errors or omissions. 
-.TH logaxe 1 "09 October 2006" "0.99" "logaxe"
+.TH logax 1 "09 October 2006" "0.99" "logax"
 .SH NAME
-logaxe \- Used for splitting httpd logs
+logax \- Used for splitting httpd logs
 .SH SYNOPSIS
 .\"
-.B logaxe 
+.B logax 
 [OPTIONS]... LOGDIR 
 . 
 
@@ -15,7 +15,7 @@ logaxe \- Used for splitting httpd logs
 Interval between burst writing, default 1 second
 
 .IP "-r, --rotate_enable"
-Enable logrotating by logaxe
+Enable logrotating by logax
 
 .IP "-i, --rotate_interval <SECONDS>"
 Interval between the log directory is checked on oversized files
@@ -34,23 +34,23 @@ Display quick help
 
 
 .SH DESCRIPTION
-.B logaxe
-is a burst writer behind the apache or apache2 webserver or to use as a tool to split logs. beside this jobs daily statistics are made up and written to disk per month and rotates the splitted output. You can hook scripts with the given hook directory to execute scripts on a pre-rotate event from logaxe
+.B logax
+is a burst writer behind the apache or apache2 webserver or to use as a tool to split logs. beside this jobs daily statistics are made up and written to disk per month and rotates the splitted output. You can hook scripts with the given hook directory to execute scripts on a pre-rotate event from logax
 
 .SH EXAMPLE
 Add the folowing two line to your /etc/httpd/conf/httpd.conf 
 
 LogFormat "%v %h %l %u %t \\"%r\\" %>s %b \\"%{Referer}i" \\"%{User-Agent}i\\"\\" spcombined
 
-CustomLog "|/usr/local/bin/logaxe -b 10 -r -i 180 -m 50000 -s ./somestatdir ./somelogdir" spcombined
+CustomLog "|/usr/local/bin/logax -b 10 -r -i 180 -m 50000 -s ./somestatdir ./somelogdir" spcombined
 
 
 Commandlines example:
-./logaxe -b 10 -r -i 180 -m 50000 -s ./somestatdir ./somelogdir < some.log
+./logax -b 10 -r -i 180 -m 50000 -s ./somestatdir ./somelogdir < some.log
 
 .SH FILES
 .P 
-.I /usr/local/bin/logaxe
+.I /usr/local/bin/logax
 .SH SEE ALSO
 .BR apache (1) 
 .SH BUGS
@@ -60,4 +60,4 @@ No known bugs at this time.
 W.A. van der Meeren (danny@panelsix.com)
 .fi
 .SH HISTORY
-2006 \- The logaxe is introduced by Openpanel
+2006 \- The logax is introduced by Openpanel

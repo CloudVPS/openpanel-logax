@@ -6,16 +6,16 @@ OBJ	= 	main.o \
 		trafcount.o \
 		tlogrotate.o
 
-all: logaxe.exe
-	mkapp logaxe
+all: logax.exe
+	mkapp logax
 
-logaxe.exe: $(OBJ)
-	$(LD) $(LDFLAGS) -o logaxe.exe $(OBJ) $(LIBS)
+logax.exe: $(OBJ)
+	$(LD) $(LDFLAGS) -o logax.exe $(OBJ) $(LIBS)
 
 clean:
 	rm -f *.o *.exe
-	rm -rf logaxe.app
-	rm -f logaxe
+	rm -rf logax.app
+	rm -f logax
 
 SUFFIXES: .cpp .o
 .cpp.o:
