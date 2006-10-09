@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-#define _DEBUG 1
+// #define _DEBUG 1
 
 /// User's daily traffic
 class userdtraf
