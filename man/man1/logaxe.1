@@ -1,11 +1,11 @@
-.\" A sample man page. 
-.\" Contact admin@yourcompany.com to correct errors or omissions. 
-.TH logsplit 1 "04 October 2006" "0.99" "logsplit"
+.\" manpage by panelsix. 
+.\" Contact danny@panelsix.com to correct errors or omissions. 
+.TH logaxe 1 "09 October 2006" "0.99" "logaxe"
 .SH NAME
-logsplit \- Used for splitting httpd logs
+logaxe \- Used for splitting httpd logs
 .SH SYNOPSIS
 .\"
-.B logsplit 
+.B logaxe 
 [OPTIONS]... LOGDIR 
 . 
 
@@ -15,7 +15,7 @@ logsplit \- Used for splitting httpd logs
 Interval between burst writing, default 1 second
 
 .IP "-r, --rotate_enable"
-Enable logrotating by logsplit
+Enable logrotating by logaxe
 
 .IP "-i, --rotate_interval <SECONDS>"
 Interval between the log directory is checked on oversized files
@@ -34,30 +34,30 @@ Display quick help
 
 
 .SH DESCRIPTION
-.B logsplit
-is a burst writer behind the apache or apache2 webserver or to use as a tool to split logs. beside this jobs daily statistics are made up and written to disk per month and rotates the splitted output. You can hook scripts with the given hook directory to execute scripts on a pre-rotate event from logsplit
+.B logaxe
+is a burst writer behind the apache or apache2 webserver or to use as a tool to split logs. beside this jobs daily statistics are made up and written to disk per month and rotates the splitted output. You can hook scripts with the given hook directory to execute scripts on a pre-rotate event from logaxe
 
 .SH EXAMPLE
 Add the folowing two line to your /etc/httpd/conf/httpd.conf 
 
 LogFormat "%v %h %l %u %t \\"%r\\" %>s %b \\"%{Referer}i" \\"%{User-Agent}i\\"\\" spcombined
 
-CustomLog "|/usr/local/bin/logsplit -b 10 -r -i 180 -m 50000 -s ./somestatdir ./somelogdir" spcombined
+CustomLog "|/usr/local/bin/logaxe -b 10 -r -i 180 -m 50000 -s ./somestatdir ./somelogdir" spcombined
 
 
 Commandlines example:
-./logsplit -b 10 -r -i 180 -m 50000 -s ./somestatdir ./somelogdir < some.log
+./logaxe -b 10 -r -i 180 -m 50000 -s ./somestatdir ./somelogdir < some.log
 
 .SH FILES
 .P 
-.I /usr/local/bin/logsplit
+.I /usr/local/bin/logaxe
 .SH SEE ALSO
 .BR apache (1) 
 .SH BUGS
 No known bugs at this time. 
 .SH AUTHOR
 .nf
-W.A. van der Meeren (danny@openpanel.com)
+W.A. van der Meeren (danny@panelsix.com)
 .fi
 .SH HISTORY
-2006 \- The logsplit is introduced by Openpanel
+2006 \- The logaxe is introduced by Openpanel

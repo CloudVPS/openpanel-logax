@@ -6,16 +6,16 @@ OBJ	= 	main.o \
 		trafcount.o \
 		tlogrotate.o
 
-all: logsplit.exe
-	mkapp logsplit
+all: logaxe.exe
+	mkapp logaxe
 
-logsplit.exe: $(OBJ)
-	$(LD) $(LDFLAGS) -o logsplit.exe $(OBJ) $(LIBS)
+logaxe.exe: $(OBJ)
+	$(LD) $(LDFLAGS) -o logaxe.exe $(OBJ) $(LIBS)
 
 clean:
 	rm -f *.o *.exe
-	rm -rf logsplit.app
-	rm -f logsplit
+	rm -rf logaxe.app
+	rm -f logaxe
 
 SUFFIXES: .cpp .o
 .cpp.o:
