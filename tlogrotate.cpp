@@ -218,14 +218,23 @@ void tlogrotate::rotatefile (const string &vhost)
 		{
 			string nr = v["path"]; 
 			string newname = nr.cutatlast ('.');
-			newname.printf (".%d", nr.toint()+1);
 			
-			// Move the log file
-			fs.mv (v["path"], newname);
+			if (nr.toint() >= 5)
+			{
+				// Remove file
+				fs.rm (v["path"]);
+			}
+			else
+			{
+				newname.printf (".%d", nr.toint()+1);
 			
-			#ifdef _DEBUG
-			::printf (" Move\n");
-			#endif
+				// Move the log file
+				fs.mv (v["path"], newname);
+			
+				#ifdef _DEBUG
+				::printf (" Move\n");
+				#endif
+			}
 
 		}
 	}

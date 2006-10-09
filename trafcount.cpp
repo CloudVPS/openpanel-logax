@@ -103,7 +103,7 @@ void ttrafcount::loadstats (void)
 
 	timestamp 	now (kernel.time.now());	
 	timets = 	now.format ("%G%m");
-	fname.printf ("%s/%s.bin.xml", _dbfile.str(), timets.str());
+	fname.printf ("%s/%s.bandwidth.log", _dbfile.str(), timets.str());
 
 
 	try
@@ -161,8 +161,6 @@ void ttrafcount::update (void)
 	_df.printf ("Now: %s - Last: %s\n", now.str(), last.str());
 	#endif
 	
-	// Update timestamp
-	_lastupdate = kernel.time.now ();
 	
 	foreach (v, _trafdata)
 	{
@@ -183,6 +181,10 @@ void ttrafcount::update (void)
 	
 		_trafdata.clear ();
 	}
+
+	// Update timestamp
+	_lastupdate = kernel.time.now ();
+
 	
 	#ifdef _DEBUG
 	_df.printf ("Saving trafic stats\n");
