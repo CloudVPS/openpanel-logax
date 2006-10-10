@@ -33,7 +33,7 @@ int logsplitterApp::main (void)
 	// -s statdir to write daily usage in bytes	
 	// --statdir
 	
-	if (argv.exists ("--help") || argv.count() <= 2 || argv["*"].count() > 1)
+	if (argv.exists ("--help") || argv.count() < 2 || argv["*"].count() > 1)
 	{
 	  fout.printf (
 		 "\nUsage: logsplit [OPTIONS]... LOGDIR \n"
@@ -56,7 +56,7 @@ int logsplitterApp::main (void)
 		 "  <DIR>          Directory name.\n\n"
 		 
 		);
-	  return 0;			
+	  return 1;			
 	}
 	
 	if (argv.exists ("--burst_write_interval"))
@@ -108,6 +108,13 @@ int logsplitterApp::main (void)
 	{
 		_log_statdir = argv["--statdir"].sval();
 		_acceptstats = true;
+		
+		if (! fs.exists (_log_statdir))
+		{
+			fout.printf ("ERROR: Path: <%s> does not exist\n", 
+						 _log_statdir.cval());
+			return 1;
+		}		
 	}
 	else
 		_acceptstats = false;
@@ -118,7 +125,7 @@ int logsplitterApp::main (void)
 	{
 		fout.printf ("ERROR: Path: <%s> does not exist\n", 
 					 argv["*"][0].cval());
-		return 0;
+		return 1;
 	}
 	else
 		_log_outdir = argv["*"][0].sval(); 
