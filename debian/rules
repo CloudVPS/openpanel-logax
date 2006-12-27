@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+
+build: build-stamp
+build-stamp:
+	./configure
+	make	
+	touch $@
+
+install: build
+	dh_clean -k
+	mkdir -p $(CURDIR)/debian/tmp/var/lib/logax
+	cp -r ./logax.app $(CURDIR)/debian/tmp/var/lib/logax/
+	mkdir -p $(CURDIR)/debian/tmp/usr/share/man/man1
+	cp ./man/man1/logax.1 $(CURDIR)/debian/tmp/usr/share/man/man1/
+
+clean:
+	rm -f build-stamp
+	dh_clean
+	make clean
+
+binary-indep:
+
+binary-arch binary: build install
+	dh_install -a --sourcedir=debian/tmp
+	dh_installchangelogs -a ChangeLog
+	dh_installdocs -a
+	dh_installdeb -a
+	dh_compress -a
+	dh_fixperms -a
+	dh_strip -a
+	dh_shlibdeps -a
+	dh_gencontrol -a
+	dh_md5sums -a
+	dh_builddeb -a
+
+.PHONY: build binary binary-arch binary-indep clean install

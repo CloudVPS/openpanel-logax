@@ -1,0 +1,12 @@
+Source: logax
+Section: web 
+Priority: optional
+Maintainer: OpenPanel packaging <packages@panelsix.com>
+Build-Depends: debhelper (>= 5), autotools-dev, libgrace-dev
+Standards-Version: 3.7.2
+
+Package: logax
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Burst writer for apache/httpd logfiles 
+ Logaxe is a burst writer for http logs or to use as a tool to split logs. 
