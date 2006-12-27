@@ -16,7 +16,7 @@ install: build
 clean:
 	rm -f build-stamp
 	dh_clean
-	make clean
+	#make clean
 
 binary-indep:
 
