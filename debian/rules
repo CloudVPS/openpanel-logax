@@ -22,7 +22,7 @@ binary-indep:
 
 binary-arch binary: build install
 	dh_install -a --sourcedir=debian/tmp
-	dh_installchangelogs -a ChangeLog
+	#dh_installchangelogs -a ChangeLog
 	dh_installdocs -a
 	dh_installdeb -a
 	dh_compress -a
