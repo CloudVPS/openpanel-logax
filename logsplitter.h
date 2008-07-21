@@ -14,6 +14,20 @@ class logsplitterApp : public application
 				 	 logsplitterApp (void) 
 						: application ("logsplitter")
 					 {
+					 	opt = $("-h", $("long","--help")) ->
+					 		  $("-b", $("long","--burst_write_interval")) ->
+					 		  $("-r", $("long","--rotate_enable")) ->
+					 		  $("-i", $("long","--rotate_interval")) ->
+					 		  $("-m", $("long","--max_logfile_size")) ->
+					 		  $("-o", $("long","--hookdir")) ->
+					 		  $("-s", $("long","--statdir")) ->
+					 		  $("--help", $("argc", 0)) ->
+					 		  $("--burst_write_interval", $("argc",1)) ->
+					 		  $("--rotate_enable", $("argc",0)) ->
+					 		  $("--rotate_interval", $("argc",1)) ->
+					 		  $("--max_logfile_size", $("argc",1)) ->
+					 		  $("--hookdir", $("argc",1)) ->
+					 		  $("--statdir", $("argc",1));
 					 }
 					~logsplitterApp (void)
 					 {

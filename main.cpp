@@ -12,9 +12,6 @@ APPOBJECT(logsplitterApp);
 //  =========================================================================
 int logsplitterApp::main (void)
 {
-
-	
-
 	// -b burst write interval
 	// --burst_write_interval
 	
@@ -60,9 +57,13 @@ int logsplitterApp::main (void)
 	}
 	
 	if (argv.exists ("--burst_write_interval"))
+	{
 		_log_statinterval = argv["--burst_write_interval"].ival();
+	}
 	else
-		_log_statinterval = 1; // user does not wan't to tweak timing
+	{
+		_log_statinterval = 1; // user does not want to tweak timing
+	}
 	
 	if (argv.exists ("--hookdir"))
 	{
