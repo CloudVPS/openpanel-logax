@@ -91,21 +91,25 @@ void slogthread::writelogs (const value &v)
 			string s = cf.id();
 			s = s.filter("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQR"
 						 "STUVWXYZ0123456789-.");
-						 
-			// Lock file, we are buzzy with it
-			protate->lockfile (s, "slogt");
-			string outfile = "%s/%s.log" %format (logdir,s);
 			
-			// ::printf (outfile.str());
-		
-			f.openappend (outfile);
-
-			foreach (logline, cf)
-				f.writeln (logline.sval());
+			if (cf.id() == s)
+			{
+				
+				// Lock file, we are buzzy with it
+				protate->lockfile (s, "slogt");
+				string outfile = "%s/%s.log" %format (logdir,s);
+				
+				// ::printf (outfile.str());
 			
-			f.close ();
-			
-			protate->unlockfile (cf.name (), "slogt");
+				f.openappend (outfile);
+	
+				foreach (logline, cf)
+					f.writeln (logline.sval());
+				
+				f.close ();
+				
+				protate->unlockfile (s, "slogt");
+			}
 		}
 	}
 }
