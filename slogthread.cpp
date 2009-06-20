@@ -84,15 +84,18 @@ void slogthread::writelogs (const value &v)
 	foreach (cf, v)
 	{
 		file 	f;
-		string 	outfile = logdir;
 		
 		// Check if the rotate tread is moving files
 		if (! protate->testgloballock ())
 		{
+			string s = cf.id();
+			s = s.filter("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQR"
+						 "STUVWXYZ0123456789-.");
+						 
 			// Lock file, we are buzzy with it
-			protate->lockfile (cf.name (), "slogt");
+			protate->lockfile (s, "slogt");
+			string outfile = "%s/%s.log" %format (logdir,s);
 			
-			outfile.printf ("/%s.log", cf.name());
 			// ::printf (outfile.str());
 		
 			f.openappend (outfile);

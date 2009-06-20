@@ -169,21 +169,21 @@ value *logsplitterApp::transll (const string &s)
 	string				tmp (s);
 
 	v["domain"]		= tmp.cutat (" ");
-	v["ip"] 		= tmp.copyuntil (" - - ");
-	tmp				= s.copyafter ('[');
-	v["822-date"]	= tmp.cutat (']');
+	v["ip"]			= tmp.cutat (" ");
+	v["user1"]		= tmp.cutat (" ");
+	v["user2"]		= tmp.cutat (" [");
+	v["822-date"]	= tmp.cutat ("] ");
 	
-	tmp = tmp.ltrim (" \"");
-	v["cmd"]		= tmp.cutat (" ");
-	v["uri"]		= tmp.cutat ("\"");
-	tmp = tmp.ltrim ();
+	value rest = strutil::splitquoted (tmp, ' ');
+	string httpreq = rest[0];
+	v["cmd"] = httpreq.cutat (" ");
+	v["uri"] = httpreq.cutat (" ");
+	v["protocol"] = httpreq;
 	
-	v["result"]		= tmp.cutat (" ");
-	v["size"]		= tmp.cutat (" ");
-
+	v["result"] = res[1].ival();
+	v["size"] = res[2].ival();
 	return &v;
 }
-
 
 //  =========================================================================
 ///	METHOD logsplitterApp::shutdown
