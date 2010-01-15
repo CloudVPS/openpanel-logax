@@ -180,8 +180,8 @@ value *logsplitterApp::transll (const string &s)
 	v["uri"] = httpreq.cutat (" ");
 	v["protocol"] = httpreq;
 	
-	v["result"] = res[1].ival();
-	v["size"] = res[2].ival();
+	v["result"] = rest[1].ival();
+	v["size"] = rest[2].ival();
 	return &v;
 }
 
