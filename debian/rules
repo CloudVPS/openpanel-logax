@@ -9,7 +9,7 @@ build-stamp:
 install: build
 	dh_clean -k
 	mkdir -p $(CURDIR)/debian/tmp/var/lib/logax
-	cp -r ./logax.app $(CURDIR)/debian/tmp/var/lib/logax/
+	cp -r ./logax $(CURDIR)/debian/tmp/var/lib/logax/
 	mkdir -p $(CURDIR)/debian/tmp/usr/share/man/man1
 	cp ./man/man1/logax.1 $(CURDIR)/debian/tmp/usr/share/man/man1/
 

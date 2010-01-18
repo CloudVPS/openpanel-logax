@@ -19,7 +19,7 @@ set -e
 case "$1" in
     configure)
 	echo "Symlinking binary"
-	ln -s /var/lib/logax/logax.app/exec /usr/bin/logax
+	ln -s /var/lib/logax/logax /usr/bin/logax
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
