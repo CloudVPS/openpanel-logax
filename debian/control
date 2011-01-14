@@ -2,7 +2,7 @@ Source: logax
 Section: web 
 Priority: optional
 Maintainer: OpenPanel packager <packages@openpanel.com>
-Build-Depends: debhelper (>= 5), autotools-dev, libgrace, libgrace-dev
+Build-Depends: debhelper (>= 5), libgrace-dev
 Standards-Version: 3.7.2
 
 Package: logax
